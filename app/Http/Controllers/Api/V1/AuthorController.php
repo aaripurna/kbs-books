@@ -3,41 +3,41 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CategoryCreateRequest;
-use App\Models\Category;
-use Illuminate\Http\JsonResponse;
+use App\Http\Requests\AuthorCreateRequest;
+use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
-class CategoryController extends Controller
+class AuthorController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $categories = \App\Models\Category::query()->paginate(32);
+        $categories = Author::query()->paginate(32);
 
         return response()->json($categories);
     }
 
-    public function store(CategoryCreateRequest $request): JsonResponse
+    public function store(AuthorCreateRequest $request): JsonResponse
     {
         $validated = $request->validated();
 
-        $category = Category::create($validated);
+        $category = Author::create($validated);
 
         return response()->json($category);
     }
 
     public function show(int $id): JsonResponse
     {
-        $category = Category::findOrFail($id);
+        $category = Author::findOrFail($id);
 
         return response()->json($category);
     }
 
-    public function update(int $id, categoryCreateRequest $request): JsonResponse
+    public function update(int $id, AuthorCreateRequest $request): JsonResponse
     {
         $validated = $request->validated();
 
-        $category = Category::findOrFail($id);
+        $category = Author::findOrFail($id);
         $category->fill($validated);
         $category->save();
 
@@ -46,7 +46,7 @@ class CategoryController extends Controller
 
     public function destroy(int $id): JsonResponse
     {
-        Category::destroy($id);
+        Author::destroy($id);
 
         return response()->json();
     }
