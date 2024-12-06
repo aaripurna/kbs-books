@@ -30,4 +30,22 @@ class AuthorController extends Controller
 
         return Redirect::route('authors.index');
     }
+
+    public function edit(int $id): View
+    {
+        $author = \App\Models\Author::find($id);
+
+        return view("author.edit", ["author" => $author]);
+    }
+
+    public function update(int $id, AuthorCreateRequest $request): RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $author = \App\Models\Author::find($id);
+        $author->fill($validated);
+        $author->save();
+
+        return Redirect::route('authors.index');
+    }
 }
