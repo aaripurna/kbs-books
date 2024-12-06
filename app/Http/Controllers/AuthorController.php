@@ -48,4 +48,10 @@ class AuthorController extends Controller
 
         return Redirect::route('authors.index');
     }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        \App\Models\Author::destroy($id);
+        return Redirect::route('authors.index');
+    }
 }
