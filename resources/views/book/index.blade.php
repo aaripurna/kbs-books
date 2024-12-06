@@ -14,7 +14,20 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
-                        <th scope="col" class="w-3/12 text-left py-3 px-6">Title</th>
+                        <th scope="col" class="w-3/12 text-left py-3 px-6">
+                            <div class="flex justify-between">
+                                <p>Title</p>
+                                @if(request()->get("dir") == "desc")
+                                <a href="{{ route('books.index', ['dir' => 'asc']) }}">
+                                    <img width="15px" src="{{ Vite::asset('resources/images/caret-down-fill.svg') }}">
+                                </a>
+                                @else
+                                <a href="{{ route('books.index', ['dir' => 'desc']) }}">
+                                    <img width="15px" src="{{ Vite::asset('resources/images/caret-up-fill.svg') }}">
+                                </a>
+                                @endif
+                            </div>
+                        </th>
                         <th scope="col" class="w-3/12 text-left py-3 px-6">Year</th>
                         <th scope="col" class="w-2/12  text-left py-3 px-6">Category</th>
                         <th scope="col" class="w-2/12  text-left py-3 px-6">Author</th>

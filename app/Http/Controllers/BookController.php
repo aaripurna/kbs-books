@@ -15,7 +15,13 @@ class BookController extends Controller
 {
     public function index(Request $request): View
     {
-        $books = Book::query()->with('author')->with('category')->paginate(250);
+        $sortDir = $request->get("dir", "asc");
+
+        if (!in_array(strtolower($sortDir), ["asc", "desc"])) {
+            $sortDir = "asc";
+        }
+
+        $books = Book::query()->with('author')->with('category')->orderBy('title', $sortDir)->paginate(250);
         return view("book.index", ['books' => $books]);
     }
 
