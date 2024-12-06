@@ -12,16 +12,16 @@
     <div class="py-12" x-data="{ selectedPath: 0 }">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
                         <th scope="col" class="w-3/5 text-left py-3 px-6">Name</th>
                         <th scope="col" class="py-3 px-6 text-center">Action</th>
                     </thead>
-                    <tbody class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tbody class="bg-white border-b ">
                         @foreach($users as $item)
                         <tr">
-                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$item->name}}</td>
-                            <td class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">{{$item->name}}</td>
+                            <td class="text-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                 <a href="{{route('authors.edit', ['author' => $item])}}">Edit</a>
                                 |
                                 <button type="button"
